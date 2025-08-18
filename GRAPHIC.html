@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="graphic.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="nav-container">
+        <hr>
+        <div class="title">
+            <nav class="nav-bar">
+                <ul class="nav-list">
+                  <li><a href="WEBD.html" >UI/UX DESIGN</a></li>
+                  <li><a href="GRAPHIC.html" class="active">GRAPHIC DESIGN</a></li>
+                  <li><a href="CODING.html">CODING</a></li>
+                  <li><a href="STORY.html">ABOUT ME</a></li>
+                  <li><a href="index.html">HOME</a></li>
+                </ul>
+              </nav>
+              
+        </div>
+        <hr>
+    </div>
+    <main>
+        <div class="container">
+            <div>
+            <img src="images/frame1.png" alt="" class="file" data-file="project1.html">
+            <img src="images/frame2.png" alt="" class="file" data-file="project2.html">
+            </div>
+            
+            <div class="grid-container">
+              <div class="cell">  
+                    <img src="images/folder1.png" alt="" class="folder" data-file="project3.html">
+              </div>  
+             
+              <div class="cell"></div>
+              <div class="cell"></div>
+               
+              <div class="cell">
+                <img src="images/folder2.png" alt="" class="folder" data-file="project4.html">
+              </div>
+
+            </div>
+            
+        </div>
+    
+    
+    <div id="img-overlay">
+        <button id="close-overlay"><svg  xmlns="http://www.w3.org/2000/svg" width="29" height="32" viewBox="0 0 29 32" fill="none">
+            <line class="my-svg" y1="-1" x2="38.8404" y2="-1" transform="matrix(0.654818 0.755787 -0.721568 0.692343 2 2)" stroke="black"  stroke-width="2"/>
+            <line class="my-svg" y1="-1" x2="38.8404" y2="-1" transform="matrix(-0.654818 0.755787 0.721568 0.692343 27.4336 2)" stroke="black" stroke-width="2"/>
+            </svg></button>
+        <div id="overlay-content"></div>
+    </div>
+        <!-- content will go here later -->
+  </div>
+
+    </main>
+    <div class="next-project">
+      <a>Next project</a>
+      <a href="CODING.html" id="next-project-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="51" height="16" viewBox="0 0 51 16" fill="none">
+              <path d="M50.7071 8.70711C51.0976 8.31658 51.0976 7.68342 50.7071 7.29289L44.3431 0.928932C43.9526 0.538408 43.3195 0.538408 42.9289 0.928932C42.5384 1.31946 42.5384 1.95262 42.9289 2.34315L48.5858 8L42.9289 13.6569C42.5384 14.0474 42.5384 14.6805 42.9289 15.0711C43.3195 15.4616 43.9526 15.4616 44.3431 15.0711L50.7071 8.70711ZM0 8V9H50V8V7H0V8Z" fill="white"/>
+            </svg>
+      </a>
+    </div>
+    <footer>
+        <h3>Thanks for stopping by.</h3>
+        <div class="footer-grid">
+            <div class="footer-column">
+              <h4>Navigation</h3>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="WEBD.html">UI, UX Design</a></li>
+               <!-- <ul class="sub-menu"> 
+                    <li><a href="WEBD.html  ">Web Design Cargo Logistics</a></li>
+                    <li><a href="Ottiya.html">App Design Ottiya</a></li>
+                </ul> -->
+                <li><a href="GRAPHIC.html">Graphic Design</a></li>
+                <ul class="sub-menu">
+                    <li><a href="AppIcon.html">App Icon for Music Room</a></li>
+                    <li><a href="GRAPHIC.html">Posters and other</a></li>
+                </ul>
+                <li><a href="CODING.html">Coding</a></li>
+              <!--- <ul class="sub-menu">
+                  <li><a href="CODING.html">Star tiles</a></li>
+                  <li><a href="Vacancies.html">Recruitment platform</a></li>
+              </ul> -->
+                <li><a href="STORY.html">About me</a></li>
+              </ul>
+            </div>
+        
+            <div class="footer-column">
+              <h4>Still interested?</h3>
+              <a href="">dimova.moni19@gmail.com</a>
+              <a href="Resume.pdf">Resume</a>
+            </div>
+        
+            <div class="footer-column">
+              <p>This website was developed by Monika Dimova.</p>
+            </div>
+        
+            
+          </div>
+    
+      </footer>
+    <script>
+        const overlay = document.getElementById('img-overlay');
+        const overlayContent = document.getElementById('overlay-content');
+        const closeBtn = document.getElementById('close-overlay');
+
+        document.querySelectorAll('.file, .folder').forEach(img => {
+        img.addEventListener('click', () => {
+            const file = img.dataset.file;
+            fetch(file)
+            .then(res => res.text())
+            .then(html => {
+                overlayContent.innerHTML = html;
+                overlay.style.display = 'block';
+            })
+            .catch(err => console.error('Error loading file:', err));
+        });
+        });
+
+        closeBtn.addEventListener('click', () => {
+        overlay.style.display = 'none';
+        overlayContent.innerHTML = ''; // clear
+        });
+
+    </script>
+</body>
+</html>
